@@ -22,13 +22,13 @@ class Input extends Component {
     }
 
     render () {
-      return (
-        <div>
-          <input type='number' value = {this.state.value} onChange={this.inputChange.bind(this)}/>
-        </div>
-      )
+        return (
+            <div>
+                <input type='number' value = {this.state.value} onChange={this.inputChange.bind(this)}/>
+            </div>
+        )
     }
-  }
+}
   
 class PercentageShower extends Component {
     static defaultProps = {
@@ -47,7 +47,7 @@ class PercentageShower extends Component {
             </div>
         )
     }
-  }
+}
   
 class PercentageApp extends Component {
     constructor(){
@@ -64,14 +64,14 @@ class PercentageApp extends Component {
     }
 
     render () {
-      return (
-        <div>
-            <Input onChange={this.numberChange.bind(this)}/>
-            <PercentageShower number={this.state.number}/>
-        </div>
-      )
+        return (
+            <div>
+                <Input onChange={this.numberChange.bind(this)}/>
+                <PercentageShower number={this.state.number}/>
+            </div>
+        )
     }
-  }
+}
   
 
 
