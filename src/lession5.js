@@ -25,7 +25,7 @@ import './index.css'
 //     }
 // }
 
-// 函数式组件
+// 函数式组件  无状态组件
 // 函数式组件只能接受props 而无法像类组件可以在constructor里面初始化state。
 // 没有this指向
 
