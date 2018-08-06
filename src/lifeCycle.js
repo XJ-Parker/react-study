@@ -108,9 +108,13 @@ class Parent extends Component {
     }
 }
 // 使用上下文需要安装prop-types
-// getChildContext 定义在父组件中，指定子组件可以使用的信息
-// childContentTypes 定义在父组件中，getChildContext 指定的传递给子组件的属性需要先通过childContextTypes来指定，不然会报错
+// getChildContext 定义在父组件中，指定子组件可以使用的信息 getChildContext返回的对象就是context
+// childContentTypes 定义在父组件中，它的作用与propsType 验证组件props参数的作用类似。它是验证getChildContext返回的对象。必写
+// getChildContext 指定的传递给子组件的属性需要先通过childContextTypes来指定，不然会报错
 // 子组件通过contextTypes指定需要访问的元素。contextTypes没有定义，context将是个空对象
+
+// context打破了组件与组件之间通过props传递数据的规范，极大地增强了组件之间的耦合性
+// 就如全局变量一样，context里面的数据能被随意接触就能被随意修改；
   
 // Parent.childContextTypes = {
 //     color: PropTypes.string
@@ -126,6 +130,15 @@ class Child extends Component {
     static contextTypes = {
         color: PropTypes.object
     }
+
+    // PropTypes.array
+    // PropTypes.bool
+    // PropTypes.func
+    // PropTypes.number
+    // PropTypes.object
+    // PropTypes.string
+    // PropTypes.node
+    // PropTypes.element
 
     componentWillMount(){
         console.log('childComponentWillMount')

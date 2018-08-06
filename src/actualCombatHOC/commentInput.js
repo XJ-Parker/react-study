@@ -1,14 +1,22 @@
 
 import React,{ Component } from "react"
+import PropTypes from 'prop-types'
+import wrapWithLoadData from './wrapWithLoadData'
 // import './index.css'
 
 
 
 class CommentInput extends Component {
-    constructor(){
-        super()
+    static propTypes = {
+        onSubmit: PropTypes.func,
+        data: PropTypes.any,
+        saveData: PropTypes.func.isRequired
+    }
+
+    constructor(props){
+        super(props)
         this.state = {
-            username: '',
+            username: props.data || '',
             content: ''
         }
     }
@@ -17,28 +25,29 @@ class CommentInput extends Component {
         this.textarea.focus()
     }
 
-    componentWillUpdate(){
-        this.textarea.focus()
-    }
+    // componentWillUpdate(){
+    //     this.textarea.focus()
+    // }
 
-    componentWillMount(){
-        this._loadUsername()
-    }
+    // componentWillMount(){
+    //     this._loadUsername()
+    // }
 
     handleUsernameBlur(event){
-        this._saveUsername(event.target.value)
+        // this._saveUsername(event.target.value)
+        this.props.saveData(event.target.value)
     }
 
-    _saveUsername (username) {
-        localStorage.setItem('username', username)
-    }
+    // _saveUsername (username) {
+    //     localStorage.setItem('username', username)
+    // }
 
-    _loadUsername () {
-        const username = localStorage.getItem('username')
-        if (username) {
-          this.setState({ username })
-        }
-    }
+    // _loadUsername () {
+    //     const username = localStorage.getItem('username')
+    //     if (username) {
+    //       this.setState({ username })
+    //     }
+    // }
 
     usernameChange(event){
         this.setState({
@@ -98,5 +107,6 @@ class CommentInput extends Component {
 }
 // <input/> <select/> <textarea/> 这些元素的value值被React.js 所控制、渲染的组件，在React.js当中被称为受控组件
 
+CommentInput = wrapWithLoadData(CommentInput,'username')
 
 export default CommentInput
