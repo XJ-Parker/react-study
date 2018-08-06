@@ -1,5 +1,6 @@
 
 import React,{ Component } from "react"
+import PropTypes from 'prop-types'
 import Comment from './comment'
 import './index.css'
 
@@ -10,6 +11,11 @@ import './index.css'
 // ]
 
 class CommentList extends Component {
+    static propTypes = {
+        comments: PropTypes.array,
+        onDeleteComment: PropTypes.func
+    }
+
     static defaultProps = {
         comments: []
     }
